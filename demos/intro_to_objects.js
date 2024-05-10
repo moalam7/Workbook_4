@@ -13,3 +13,5 @@ let emp2 = { employeeId:"1", name:"Ezra", jobTitle:"Theater Teacher", payRate:38
 
 console.log(emp);
 console.log(emp2);
+
+console.log(employee.name,employee.jobTitle, employee.payRate);
