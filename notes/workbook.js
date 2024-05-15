@@ -124,3 +124,8 @@ function breakingInWhileLoop(){
 }
 
 // breakingInWhileLoop();
+
+//********************************************* */
+
+//Section 2-2 Arrays
+//JS array is used to store multiple values in a single variable
