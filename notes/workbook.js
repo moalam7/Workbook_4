@@ -129,3 +129,67 @@ function breakingInWhileLoop(){
 
 //Section 2-2 Arrays
 //JS array is used to store multiple values in a single variable
+
+let kids = ["Natalie" , "Brittany", "Zachary"];
+// console.log(kids);\
+
+//Subscripts to access item's position in array, subscriptys are 0 based
+let oldest = kids[0];
+let middle = kids[1];
+let youngest = kids[2];
+
+//Can also use a variable as a subscript!
+//Loops with arrays --> loop through this array
+//arrayName.length to recieve length of array
+//Best practice --> Store length of array in a variable if you use it in a loop
+//Keeps the JS engine to have to recalculate the length each time
+
+let numKids = kids.length;
+
+function loopThroughArray(){
+  for (let i = 0; i < numKids; i++){
+    console.log(kids[i]);
+  }
+}
+
+// loopThroughArray();
+
+//What can arrays hold? Numbers, objects, different data types
+
+// an array that stores all numbers
+let mileAgeLog = [313, 328, 349, 287, 301];
+
+// an array that stores all dates
+let importantDates = [
+  new Date(1958, 8, 5),
+  new Date(1976, 4, 30),
+  new Date(2009, 9, 10)
+  ];
+
+  // an array that stores objects
+let menu = [
+  {item: "Hamburger", price: 6.95},
+  {item: "Cheeseburger", price: 7.95},
+  {item: "Hot dog", price: 4.95}
+  ];
+
+let lunch = ["Steak fajitas", 9.95, "Sweet Tea", 2.79];
+
+//In JS, you can pass and return arrays in functions
+
+// returns an array of names
+function getKids() {
+  let kids = ["Natalie", "Brittany", "Zachary"];
+  return kids;
+ }
+
+ // displays data in an array of names
+function displayKids(kids) {
+  let numKids = kids.length;
+  for(let i = 0; i < numKids; i++) {
+  console.log(kids[i]);
+  }
+ }
+
+let ourKids = getKids();  // returns an array
+displayKids(ourKids);     // pass an array
