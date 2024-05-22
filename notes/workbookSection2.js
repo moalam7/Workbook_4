@@ -293,3 +293,37 @@ let drinks = getMenuItemsInCategory(menu1, "Drink");
 //  console.log(drinks[i].item +
 //  " $" + drinks[i].price.toFixed(2));
 // }
+
+//*****SECTION 2-3 SORTING ARRAYS */
+//sort() method sorts an array alphabetically
+//ascending order as strings
+
+let kids4 = ["Natalie", "Brittany", "Zachary"];
+
+kids4.sort(); // Sorts the array
+
+let numKids4 = kids.length;
+// for(let i = 0; i < numKids4; i++) {
+//  console.log(kids[i]);
+// }
+
+//doesn't work well if array contains NUMBERS
+let numbers3 = [3, 27, 400, 1, 111, 5];
+// console.log(numbers3.sort());
+
+//Helper method is required to sort arrays of numbers
+// Called reptitively for pairs of adjacent elements
+//Should return a neg# if elements are in right order, 0 if same, and psotiive# if elements need to be swapped
+
+//If you wanta  adescending numeric sort(), reverse the logic! swap a<b!
+
+// function compareAscendingNumber(a, b) {
+//   if (a < b) {return -1;} // right order
+//   else if (a == b) {return 0;} // same values
+//   else {return 1;} // swap, wrong order
+// }
+// let numbers = [3, 27, 400, 1, 111, 5];
+// numbers.sort(compareAscendingNumber);
+// // Results: 1, 3, 5, 27, 111, 400
+
+// console.log(numbers)
