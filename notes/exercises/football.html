@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Football</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.classless.min.css" />
+  </head>
+  <body>
+    <article>
+      <form>
+        <label for="teamsList">Team</label>
+        <select id="teamsList">
+          <option value="">Select...</option>
+        </select>
+        <button type="button" id="detailsButton">Show Details</button>
+      </form>
+      <p id="teamDetailsParagraph"></p>
+    </article>
+
+    <script>
+      "use strict";
+
+      let teams = [
+        { code: "PITT", name: "Pittsburgh Steelers", plays: "Pittsburgh, PA" },
+        { code: "DAL", name: "Dallas Cowboys", plays: "Arlington, TX" },
+        { code: "DEN", name: "Denver Broncos", plays: "Denver, CO" },
+        { code: "HOU", name: "Houston Texans", plays: "Houston, TX" },
+        { code: "KAN", name: "Kansas City Chiefs", plays: "Kansas City, MO" },
+      ];
+
+      //Get HTML elements into variables
+      const teamsList = document.getElementById("teamsList");
+      const teamDetailsParagraph = document.getElementById("teamDetailsParagraph");
+      const detailsButton = document.getElementById("detailsButton");
+
+      //Create functions to handle user events
+      function loadTeams() {
+        for (const team of teams) {
+          //Per array element, corresponding option tag with information is created
+          let option = document.createElement("option");
+          option.textContent = team.name;
+          option.value = team.code;
+          //appendChild adds these newly created elements into the parent element, which is teamsList or the "select" element
+          teamsList.appendChild(option);
+        }
+      }
+
+      function showTeamDetails() {
+        //set a variable to the value of the option in the select
+        const teamCode = teamsList.value;
+        for (const team of teams) {
+          //if the value of the selected option has the same team code -- basically perform a function when you select the team
+          if (team.code == teamCode) {
+            const details = `You selected the ${team.name} (${team.code}) who play in ${team.plays}`;
+            teamDetailsParagraph.innerText = details;
+          }
+        }
+      }
+
+      // //wireup functions
+      detailsButton.onclick = showTeamDetails;
+
+      //What to do when the page loads
+      function init() {
+        loadTeams();
+      }
+
+      //window onload
+      window.onload = init;
+    </script>
+  </body>
+</html>
