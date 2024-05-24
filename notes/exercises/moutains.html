@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mountains</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.classless.min.css" />
+  </head>
+  <body>
+    <article>
+      <form>
+        <label for="mountainsList">Mountain</label>
+        <select id="mountainsList">
+          <option value="">Select...</option>
+        </select>
+        <button type="button" id="detailsButton">Show Details</button>
+      </form>
+      <div id="mountainDetails">
+        <h2 id="mountainName"></h2>
+        <img id="mountainImg" src="" alt="" style="display: none; max-width: 100%" />
+        <p id="mountainDesc"></p>
+        <p id="mountainCoords"></p>
+      </div>
+    </article>
+
+    <script>
+      "use strict";
+
+      const mountainsArray = [
+        {
+          name: "Mt. Washington",
+          elevation: 6288,
+          effort: "Strenuous",
+          img: "Washington-StoryImage_2.jpg",
+          desc: "Mt. Washington (6,288 feet) is the highest peak east of the Mississippi River and north of the Carolinas. The upper part of the mountain has a climate similar to that of northern Labrador and supports a variety of alpine flora and fauna.",
+          coords: {
+            lat: 44.270403,
+            lng: -71.303501,
+          },
+        },
+        {
+          name: "Mt. Adams",
+          elevation: 5799,
+          effort: "Strenuous",
+          img: "Adams-StoryImage_2.jpg",
+          desc: "Mt. Adams (5,799') is the second highest peak in New England, offering spectacular views across the Great Gulf and King Ravine.",
+          coords: {
+            lat: 44.320686,
+            lng: -71.291742,
+          },
+        },
+        {
+          name: "Mt. Jefferson",
+          elevation: 5716,
+          effort: "Strenuous",
+          img: "Jefferson-StoryImage_2.jpg",
+          desc: "Mt. Jefferson (5,716 feet) has three summits a short distance apart, in line northwest and southeast, with the highest in the middle. Perhaps the most striking view is down the Great Gulf with the Carter Range beyond.",
+          coords: {
+            lat: 44.304196,
+            lng: -71.316848,
+          },
+        },
+      ];
+
+      const mountainsList = document.getElementById("mountainsList");
+      const mountainName = document.getElementById("mountainName");
+      const mountainImg = document.getElementById("mountainImg");
+      const mountainDesc = document.getElementById("mountainDesc");
+      const mountainCoords = document.getElementById("mountainCoords");
+      const detailsButton = document.getElementById("detailsButton");
+
+      function loadMountains() {
+        for (const mountain of mountainsArray) {
+          let option = document.createElement("option");
+          option.textContent = mountain.name;
+          option.value = mountain.name;
+          mountainsList.appendChild(option);
+        }
+      }
+
+      function showMountainDetails() {
+        const mountainNameValue = mountainsList.value;
+        for (const mountain of mountainsArray) {
+          if (mountain.name === mountainNameValue) {
+            mountainName.textContent = mountain.name;
+            mountainImg.src = `images/${mountain.img}`;
+            mountainImg.alt = mountain.name;
+            mountainImg.style.display = "block";
+            mountainDesc.textContent = mountain.desc;
+            mountainCoords.textContent = `Coordinates: Latitude ${mountain.coords.lat}, Longitude ${mountain.coords.lng}`;
+          }
+        }
+      }
+
+      detailsButton.onclick = showMountainDetails;
+
+      function init() {
+        loadMountains();
+      }
+
+      window.onload = init;
+    </script>
+  </body>
+</html>
